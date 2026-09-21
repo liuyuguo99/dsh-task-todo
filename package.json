@@ -1,0 +1,65 @@
+{
+  "name": "dsh-task-todo",
+  "version": "0.1.0",
+  "description": "Todo & task manager for DeepSeek Harness (dsh): list / board / calendar / gantt views, subtasks, notes and daily-weekly-monthly recurrence, with the same data exposed to the agent as tools and a slash command.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "skills/**/*",
+    "cordis.patch.yml",
+    "docs/images/*"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    },
+    "skills": [
+      "./skills/todo/SKILL.md"
+    ]
+  },
+  "scripts": {
+    "check": "node ./scripts/check-ready.mjs",
+    "test": "node ./scripts/check-ready.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis-plugin",
+    "todo",
+    "task-manager",
+    "kanban",
+    "gantt"
+  ],
+  "author": "liuyuguo99",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuyuguo99/dsh-task-todo.git"
+  },
+  "homepage": "https://github.com/liuyuguo99/dsh-task-todo#readme",
+  "bugs": {
+    "url": "https://github.com/liuyuguo99/dsh-task-todo/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  }
+}

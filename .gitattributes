@@ -1,0 +1,6 @@
+# 仓库里的文本一律 LF：宿主和 CI 都在 linux 上跑，CRLF 只会制造无意义的 diff。
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+*.webp binary

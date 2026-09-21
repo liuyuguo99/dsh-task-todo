@@ -1,0 +1,4 @@
+.tmp-*/
+.shot/
+node_modules/
+

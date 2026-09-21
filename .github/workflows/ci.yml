@@ -1,0 +1,26 @@
+name: gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-ready:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # 插件本体零依赖，但**跑门禁**需要宿主侧的东西：
+      #   lib/index.js + scripts/test-json-gate.mjs → @deepseek-ai/dsh-tools / dsh-util-values（宿主的包）
+      #   scripts/verify-client-render.mjs          → react（走 require('react') 渲染客户端代码）
+      # 装一份宿主本体就带齐了前者。--no-save 保证不写进 package.json、也不进发布产物。
+      - name: host + react for the gates (not plugin deps)
+        run: npm install --no-save --no-package-lock --legacy-peer-deps react @deepseek-ai/dsh
+
+      - name: delivery gates
+        run: node scripts/check-ready.mjs
