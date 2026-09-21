@@ -150,7 +150,7 @@
 前置：已安装 DeepSeek Harness（`dsh`，且 `dsh web` 能跑起来），Node ≥ 22。
 
 ```sh
-# 从 npm 安装
+# 从 npm 安装（包发布后可用；当前请先 git clone 再指本地目录）
 dsh plugin --profile web add dsh-task-todo
 
 # 或者指到本地目录（开发形态）
